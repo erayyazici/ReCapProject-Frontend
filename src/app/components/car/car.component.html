@@ -1,0 +1,43 @@
+<div class="row">
+  <div *ngFor="let car of cars" class="myCard p-3 col-md-4">
+      <div class="card">
+          <img [src]="SetImage(car)" class="card-img-top myimg" alt="...">
+          <div class="card-body">
+              <h5 class="card-title">{{car.carName}}</h5>
+              <p class="card-text">Araç bilgileri için detay butonuna tıklayınız.</p>
+              <button
+              (click)="setCarId(car.id)"
+            class="btn btn-primary float-end"
+          >
+            Details
+          </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- <h4>CARS</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Car Name</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Year</th>
+      <th scope="col">Color</th>
+      <th scope="col">Daily Price</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of cars">
+      <th scope="row">{{ car.carId }}</th>
+      <td>{{ car.carName }}</td>
+      <td>{{ car.brandName }}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.colorName }}</td>
+      <td>{{ car.dailyPrice }}</td>
+      <td>{{ car.description }}</td>
+    </tr>
+  </tbody>
+</table> -->
