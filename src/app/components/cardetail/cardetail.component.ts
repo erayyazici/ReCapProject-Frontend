@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarDetail } from 'src/app/models/cardetail';
 import { Image } from 'src/app/models/image';
 import { CardetailService } from 'src/app/services/cardetail.service';
+import { RentCarService } from 'src/app/services/rentCar.service';
 import { ImageService } from 'src/app/services/image.service';
 
 
@@ -17,7 +19,7 @@ export class CardetailComponent implements OnInit {
   images: Image[] = []
   dataLoaded = false;
 
-  constructor(private carDetailService: CardetailService, private imageService: ImageService, private activatedRoute: ActivatedRoute) { }
+  constructor(private carDetailService: CardetailService, private imageService: ImageService, private activatedRoute: ActivatedRoute, private toastrService:ToastrService, private rentCarService:RentCarService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -40,12 +42,16 @@ export class CardetailComponent implements OnInit {
       console.log(Images.data)
     })
   }
-  getCarDetailsByBrandNameAndColorName(brandName: string, colorName: string) {
+  getCarDetailsByBrandNameAndColorName(brandId: number, colorId: number) {
     this.carDetailService
-      .getCarDetailsByBrandNameAndColorName(brandName, colorName)
+      .getCarDetailsByBrandNameAndColorName(brandId, colorId)
       .subscribe((response) => {
         this.carDetails = response.data;
         this.dataLoaded = true;
       });
+  }
+  rentCar(carDetails: CarDetail) {
+    this.toastrService.success("Sepete eklendi", carDetails.carName)
+
   }
 }

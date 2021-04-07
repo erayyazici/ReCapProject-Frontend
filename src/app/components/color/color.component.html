@@ -1,12 +1,7 @@
-<ul class="list-group">
-  <li
-    class="list-group-item"
-    style="background-color: darkgray; color: white"
-    aria-current="true"
-  >
-  Araba Renkleri
+<ul class="list-group mt-2">
+  <li routerLink="/cars" (click)="clearCurrentBrand()" [class]="getAllColorClass()">
+    Tüm Renkler
   </li>
-  <li [class]="getAllColorClass()" routerLink="cars">Tüm Modeller</li>
   <li
     (click)="setCurrentColor(color)"
     routerLink="cars/color/{{ color.colorId }}"

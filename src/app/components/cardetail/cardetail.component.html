@@ -28,7 +28,21 @@
         <p><strong>Model Yılı : </strong>{{car.modelYear}}</p>
         <p><strong>Renk : </strong>{{car.colorName}}</p>
         <p><strong>Günlük Fiyat : </strong>{{car.dailyPrice}} TL</p>
-        <button class="btn btn-primary float-end mt-4">Kirala</button>
+        <div class="d-grid gap-2 mb-2">
+          <div *ngIf = "car.status == true" class="dd-grid gap-2 mb-2">
+            <div style="margin: auto;">
+              <div class="d-grid gap-2">
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#rentModal">
+                  Aracı Kirala
+                </button>
+              </div>
+              <app-rental [car] = "car"></app-rental>
+            </div>
+          </div>
+        </div>
+        <div class="dd-grid gap-2 mb-2" *ngIf = "car.status == false">
+          <div class="alert alert-danger">Araç şu an kiralanamaz.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -41,4 +55,7 @@
       </div>
     </div>
   </div>
+
+
+
 </div>

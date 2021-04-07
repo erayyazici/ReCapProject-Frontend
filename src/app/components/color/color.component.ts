@@ -36,6 +36,9 @@ export class ColorComponent implements OnInit {
       return "list-group-item"
     }
   }
+  clearCurrentBrand(){
+    this.currentColor = null;
+  }
 
   getAllColorClass(){
     if(!this.currentColor){

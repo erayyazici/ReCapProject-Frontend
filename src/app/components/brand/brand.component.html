@@ -1,17 +1,12 @@
-<ul class="list-group">
-  <li
-    class="list-group-item"
-    style="background-color: darkgray; color: white"
-    aria-current="true"
-  >
-    Araba Modelleri
+<ul class="list-group mt-2">
+  <li routerLink="/cars" (click)="clearCurrentBrand()" [class]="getAllClass()">
+    Tüm Modeller
   </li>
-  <li [class]="getAllBrandClass()" routerLink="cars">Tüm Modeller</li>
   <li
-    (click)="setCurrentBrand(brand)"
-    routerLink="cars/brand/{{ brand.brandId }}"
     *ngFor="let brand of brands"
-    [class]="getCurrentBrandClass(brand)"
+    (click)="setCurrentBrand(brand)"
+    [class]="getClass(brand)"
+    routerLink="/cars/brand/{{ brand.brandId }}"
   >
     {{ brand.brandName }}
   </li>

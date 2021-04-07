@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarDetail } from 'src/app/models/cardetail';
 import { CardetailService } from 'src/app/services/cardetail.service';
 
@@ -11,23 +12,29 @@ import { CardetailService } from 'src/app/services/cardetail.service';
 export class CarComponent implements OnInit {
 
   cars: CarDetail[] = [];
+  searchText:"";
+  brandId:number;
+  colorId:number;
 
-  constructor(private carDetailService: CardetailService, private activatedRoute: ActivatedRoute, private route:Router) { }
+  constructor(private carDetailService: CardetailService, private activatedRoute: ActivatedRoute, private route:Router,private toastrService: ToastrService, ) { }
 
   ngOnInit(): void {
+    this.fillPage();
+  }
+  fillPage() {
     this.activatedRoute.params.subscribe(params => {
       if (params["brandId"]) {
-        this.getCarsByBrand(params["brandId"])
+        this.getCarsByBrand(params["brandId"]);
       }
-      else if(params["colorId"]){
-        this.getCarsByBrand(params["colorId"])
-      }     
+      else if (params["colorId"]) {
+        this.getCarsByColor(params["colorId"]);
+      }
       else {
-        this.getCars()
+        this.getCars();
       }
-    })
-    
+    });
   }
+
 
   getCars() {
     this.carDetailService.GetCarDetails().subscribe(response => {
@@ -35,8 +42,8 @@ export class CarComponent implements OnInit {
     })
   }
 
-  setCarId(carId:number){
-    this.route.navigate(["cars/detail/",carId])
+  setCurrentCar(car:CarDetail){
+    this.route.navigate(["cars/detail/",car.id])
   }
 
   getCarsByBrand(brandId: number) {
@@ -58,4 +65,16 @@ export class CarComponent implements OnInit {
       return `${this.staticFilesUrl}defaultcar.jpg`;
     }
   }
+  onColorChange(colorId:number){
+    this.colorId = colorId;
+  }
+  onBrandChange(brandId:number){
+    this.brandId=brandId;
+  }
+  applyFilters(){
+     this.carDetailService.getCarDetailsByBrandNameAndColorName(this.brandId,this.colorId).subscribe(response=>{
+       this.cars = response.data;
+       //this.toastrService.success("Sepete eklendi")
+     })
+}
 }

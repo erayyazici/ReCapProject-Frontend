@@ -34,11 +34,11 @@ export class CardetailService {
     return this.httpClient.get<ListResponseModel<CarDetail>>(newPath);
   }
   getCarDetailsByBrandNameAndColorName(
-    brandName: string,
-    colorName: string
+    brandId: number,
+    colorId: number
   ): Observable<ListResponseModel<CarDetail>> {
     return this.httpClient.get<ListResponseModel<CarDetail>>(
-      `${this.apiUrl}/getbybrandandcolor?brandName=${brandName}&colorName=${colorName}`
+      `${this.apiUrl}cars/getbybrandandcolor?brandId=${brandId}&colorId=${colorId}`
     );
   }
 }
