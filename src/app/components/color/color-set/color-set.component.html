@@ -1,0 +1,29 @@
+<table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Model Id</th>
+        <th scope="col">Model Adı</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let color of colors">
+        <th scope="row">{{ color.colorId}}</th>
+        <td>{{ color.colorName }}</td>
+        <td><button class="btn btn-primary w-25"
+          routerLink="/colors/update/{{ color.colorId }}" >
+            Güncelle
+          </button></td>
+          <td><button class="btn btn-danger w-25" (click)="deleteColor(color)" >
+            Sil
+          </button></td>
+      </tr>
+    </tbody>
+    
+  </table>
+  <button  class="btn btn-success float-end" style=" width: 20%; margin-right:10%;"
+  routerLink="/colors/add"
+  >
+   Yeni Renk Ekle
+  </button>

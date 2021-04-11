@@ -9,5 +9,7 @@ export interface CarDetail {
     imageId: number,
     imagePath: string,
     date: Date,
-    status?:boolean;
+    status?:boolean,
+    brandId:number,
+    colorId:number
 }

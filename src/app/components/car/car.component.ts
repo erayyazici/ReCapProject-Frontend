@@ -74,7 +74,6 @@ export class CarComponent implements OnInit {
   applyFilters(){
      this.carDetailService.getCarDetailsByBrandNameAndColorName(this.brandId,this.colorId).subscribe(response=>{
        this.cars = response.data;
-       //this.toastrService.success("Sepete eklendi")
      })
 }
 }

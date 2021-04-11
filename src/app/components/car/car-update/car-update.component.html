@@ -1,0 +1,132 @@
+<div class="content mt-2">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">Araç Düzenle</div>
+        <div class="card-body">
+          <form [formGroup]="carUpdateForm" class="form">
+            
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                id="carName"
+                formControlName="carName"
+                class="form-control"
+                placeholder="Araba Adı"
+                [ngClass]="{
+                  'is-invalid':
+                    carUpdateForm.get('carName').touched &&
+                    carUpdateForm.get('carName').invalid
+                }"
+              />
+              <label for="carName">Araba Adı</label>
+            </div>
+  
+            <div class="form-floating mb-3">
+              <select
+                class="form-select"
+                [ngClass]="{
+                  'is-invalid':
+                    carUpdateForm.get('brandId').touched &&
+                    carUpdateForm.get('brandId').invalid
+                }"
+                aria-label="Renk"
+                formControlName="brandId"
+              >
+                <option
+                  class="form-control"
+                  type="number"
+                  *ngFor="let brand of brands"
+                  [ngValue]="brand.brandId"
+                >
+                  {{ brand.brandName }}
+                </option>
+              </select>
+              <label for="brandId">Marka</label>
+            </div>
+  
+  
+            <div class="form-floating mb-3">
+              <select
+                class="form-select"
+                [ngClass]="{
+                  'is-invalid':
+                    carUpdateForm.get('colorId').touched &&
+                    carUpdateForm.get('colorId').invalid
+                }"
+                aria-label="Renk"
+                formControlName="colorId"
+              >
+                <option
+                  type="number"
+                  class="form-control"
+                  *ngFor="let color of colors"
+                  [ngValue]="color.colorId"
+                >
+                  {{ color.colorName }}
+                </option>
+              </select>
+              <label for="colorId">Renk</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="number"
+                id="modelYear"
+                formControlName="modelYear"
+                class="form-control"
+                placeholder="Model Yılı"
+                [ngClass]="{
+                  'is-invalid':
+                    carUpdateForm.get('modelYear').touched &&
+                    carUpdateForm.get('modelYear').invalid
+                }"
+              />
+              <label for="modelYear">Model Yılı</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="number"
+                id="dailyPrice"
+                formControlName="dailyPrice"
+                class="form-control"
+                placeholder="Günlük Fiyat"
+                [ngClass]="{
+                  'is-invalid':
+                    carUpdateForm.get('dailyPrice').touched &&
+                    carUpdateForm.get('dailyPrice').invalid
+                }"
+              />
+              <label for="dailyPrice"
+                >Günlük Fiyat
+                {{
+                  carUpdateForm.value.dailyPrice
+                    | currency: "TRY":"symbol-narrow":"1.2-2"
+                }}</label
+              >
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                id="description"
+                formControlName="description"
+                class="form-control"
+                placeholder="Aciklama"
+                [ngClass]="{
+                  'is-invalid':
+                    carUpdateForm.get('description').touched &&
+                    carUpdateForm.get('description').invalid
+                }"
+              />
+              <label for="description">Açıklama</label>
+            </div>
+
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-fill btn-success" (click)="update()">Güncelle</button>
+        </div>
+      </div>
+    </div>
+  </div>

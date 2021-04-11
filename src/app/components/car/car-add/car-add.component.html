@@ -1,0 +1,104 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Araba Ekle</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="carAddForm">
+          
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              id="carName"
+              formControlName="carName"
+              class="form-control"
+              placeholder="Araba Adı"
+            />
+            <label for="carName">Araba Adı</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <select
+              class="form-select"
+              aria-label="Model"
+              formControlName="brandId"
+            >
+              <option
+              type="number"
+                class="form-control"
+                *ngFor="let brand of brands"
+                [ngValue]="brand.brandId"
+              >
+                {{ brand.brandName }}
+              </option>
+            </select>
+            <label for="brandId">Model</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <select
+              class="form-select"
+              aria-label="Renk"
+              formControlName="colorId"
+            >
+              <option
+                type="number"
+                class="form-control"
+                *ngFor="let color of colors"
+                [ngValue]="color.colorId"
+              >
+                {{ color.colorName }}
+              </option>
+            </select>
+            <label for="colorId">Renk</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+              id="modelYear"
+              formControlName="modelYear"
+              class="form-control"
+              placeholder="Model Yılı"
+            />
+            <label for="modelYear">Model Yılı</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+              id="dailyPrice"
+              formControlName="dailyPrice"
+              class="form-control"
+              placeholder="Günlük Fiyat"
+            />
+            <label for="dailyPrice"
+              >Günlük Fiyat
+              {{
+                carAddForm.value.dailyPrice
+                  | currency: "TRY":"symbol-narrow":"1.2-2"
+              }}</label
+            >
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              id="description"
+              formControlName="description"
+              class="form-control"
+              placeholder="Aciklama"
+            />
+            <label for="description">Açıklama</label>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="d-grid gap-2 col-3 mx-auto">
+          <button class="btn btn-primary" (click)="add()">Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

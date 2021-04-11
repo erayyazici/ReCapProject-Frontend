@@ -17,7 +17,7 @@ export class CardetailComponent implements OnInit {
 
   carDetails: CarDetail[] = []
   images: Image[] = []
-  dataLoaded = false;
+
 
   constructor(private carDetailService: CardetailService, private imageService: ImageService, private activatedRoute: ActivatedRoute, private toastrService:ToastrService, private rentCarService:RentCarService) { }
 
@@ -47,7 +47,6 @@ export class CardetailComponent implements OnInit {
       .getCarDetailsByBrandNameAndColorName(brandId, colorId)
       .subscribe((response) => {
         this.carDetails = response.data;
-        this.dataLoaded = true;
       });
   }
   rentCar(carDetails: CarDetail) {
