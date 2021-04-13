@@ -27,7 +27,10 @@ export class BrandAddComponent implements OnInit {
       let brandModel = Object.assign({},this.brandAddForm.value)
       console.log(brandModel)
       this.brandService.add(brandModel).subscribe(response=>{
-        this.toastrService.success(response.message,"Başarılı")
+        this.toastrService.success(
+          `Model Eklendi: ${brandModel.brandName}`,
+          'Başarılı'
+        );
         this.route.navigate(["brands/set/"])
       },responseError=>{
         if(responseError.error.Errors.length>0){

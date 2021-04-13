@@ -26,7 +26,10 @@ export class ColorAddComponent implements OnInit {
     if(this.colorAddForm.valid){
       let colorModel = Object.assign({},this.colorAddForm.value)
       this.colorService.add(colorModel).subscribe(response=>{
-        this.toastrService.success(response.message,"Başarılı")
+        this.toastrService.success(
+          `Renk Eklendi: ${colorModel.colorName}`,
+          'Başarılı'
+        );
         this.route.navigate(["colors/set/"])
       },responseError=>{
         if(responseError.error.Errors.length>0){

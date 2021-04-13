@@ -5,18 +5,16 @@
           <h5 class="title">Renk Ekle</h5>
         </div>
         <div class="card-body">
-          <form [formGroup]="colorAddForm">
-            <div class="mb-3">
+          <form [formGroup]="colorAddForm" class="form">
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                id="colorName"
+                formControlName="colorName"
+                class="form-control"
+                placeholder="Renk"
+              />
               <label for="colorName">Renk</label>
-              <div class="form-group">
-                <input
-                  type="text"
-                  id="colorName"
-                  formControlName="colorName"
-                  class="form-control"
-                  placeholder="Renk giriniz"
-                />
-              </div>
             </div>
           </form>
         </div>

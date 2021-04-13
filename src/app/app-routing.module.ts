@@ -11,8 +11,10 @@ import { CardetailComponent } from './components/car/cardetail/cardetail.compone
 import { ColorAddComponent } from './components/color/color-add/color-add.component';
 import { ColorSetComponent } from './components/color/color-set/color-set.component';
 import { ColorUpdateComponent } from './components/color/color-update/color-update.component';
+import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   { path: "", component: CarComponent },
@@ -23,7 +25,7 @@ const routes: Routes = [
   { path: "payment/:rental", component: PaymentComponent },
   { path: "rental/:carId", component: RentalComponent },
   { path: "rentals", component: RentalComponent },
-  {path:"cars/add",component:CarAddComponent},
+  {path:"cars/add",component:CarAddComponent,canActivate:[LoginGuard]},
   {path:"brands/add",component:BrandAddComponent},
   {path:"colors/add",component:ColorAddComponent},
   {path:"brands/set",component:BrandSetComponent},
@@ -31,7 +33,8 @@ const routes: Routes = [
   {path:"colors/set",component:ColorSetComponent},
   {path:"cars/update/:id",component:CarUpdateComponent},
   {path:"brands/update/:id",component:BrandUpdateComponent},
-  {path:"colors/update/:id",component:ColorUpdateComponent}
+  {path:"colors/update/:id",component:ColorUpdateComponent},
+  {path:"login",component:LoginComponent}
 
 ];
 

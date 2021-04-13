@@ -15,11 +15,20 @@ import { ColorService } from 'src/app/services/color.service';
   templateUrl: './car-update.component.html',
   styleUrls: ['./car-update.component.css'],
 })
+
 export class CarUpdateComponent implements OnInit {
   carUpdateForm: FormGroup;
   brands: Brand[];
   colors: Color[];
   car: Car;
+  id:number;
+  brandId:number;
+  colorId:number;
+  modelYear:number;
+  dailyPrice:number;
+  description:string;
+  carName:string;
+
   constructor(
     private carService: CarService,
     private colorService: ColorService,
@@ -32,26 +41,37 @@ export class CarUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      this.GetById(params['id']);
+      if (params["id"]) {
+        this.GetById(params['id']);
+        this.createCarUpdateForm();
+        this.getBrands();
+        this.getColors();
+      }
     });
-    this.getBrands();
-    this.getColors();
   }
 
-  GetById(id: number):void {
+  GetById(id: number) {
     this.carService.GetById(id).subscribe((response) => {
       this.car = response.data;
-      this.createCarUpdateForm();
+      this.carName = this.car.carName
+      this.id = this.car.id
+      this.brandId = this.car.brandId
+      this.colorId = this.car.colorId
+      this.modelYear = this.car.modelYear
+      this.dailyPrice = this.car.dailyPrice
+      this.description = this.car.description
+      console.log(this.dailyPrice)
     });
+   
   }
-  
-  getBrands():void {
+
+  getBrands(): void {
     this.brandService.getBrands().subscribe((response) => {
       this.brands = response.data;
     });
   }
 
-  getColors():void {
+  getColors(): void {
     this.colorService.getColors().subscribe((response) => {
       this.colors = response.data;
     });
@@ -59,22 +79,25 @@ export class CarUpdateComponent implements OnInit {
 
   createCarUpdateForm(): void {
     this.carUpdateForm = this.formBuilder.group({
-      id: [this.car.id],
-      carName: [this.car.carName, Validators.required],
-      brandId: [this.car.brandId, Validators.required],
-      colorId: [this.car.colorId, Validators.required],
-      dailyPrice: [this.car.dailyPrice, Validators.required],
-      modelYear: [this.car.modelYear, Validators.required],
-      description: [this.car.description, Validators.required],
+      carName: ["", Validators.required],
+      brandId: ["", Validators.required],
+      colorId: ["", Validators.required],
+      dailyPrice: ["", Validators.required],
+      modelYear: ["", Validators.required],
+      description: ["", Validators.required],
     });
   }
 
   update(): void {
     if (this.carUpdateForm.valid) {
       const carModel = Object.assign({}, this.carUpdateForm.value);
+      carModel.id = this.car.id
       this.carService.updateCar(carModel).subscribe(
         (response) => {
-          this.toastrService.success('Arac guncellendi', 'Basarili');
+          this.toastrService.success(
+            `Araç güncellendi: ${carModel.carName}`,
+            'Başarılı'
+          );
         },
         (responseError) => {
           if (responseError.error.Errors.length > 0) {

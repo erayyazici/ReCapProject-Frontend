@@ -2,24 +2,21 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h5 class="title">Marka Düzenle</h5>
+        <h5 class="title">Model Güncelle</h5>
       </div>
       <div class="card-body">
-        <form [formGroup]="brandUpdateForm" class="form">
-          <div class="form-floating mb-3">
-            <input
-              type="text"
-              id="brandName"
-              formControlName="brandName"
-              class="form-control"
-              placeholder="Marka adi"
-              [ngClass]="{
-                'is-invalid':
-                  brandUpdateForm.get('brandName').touched &&
-                  brandUpdateForm.get('brandName').invalid
-              }"
-            />
-            <label for="brandName">Marka Adi</label>
+        <form [formGroup]="brandUpdateForm">
+          <div class="form-group">
+            <div class="mb-3">
+              <label for="brandName"><b>Model</b></label>
+              <input
+                type="text"
+                id="brandName"
+                formControlName="brandName"
+                class="form-control"
+                [(ngModel)]="brandName"
+              />
+            </div>
           </div>
         </form>
       </div>

@@ -5,18 +5,16 @@
           <h5 class="title">Model Ekle</h5>
         </div>
         <div class="card-body">
-          <form [formGroup]="brandAddForm">
-            <div class="mb-3">
+          <form [formGroup]="brandAddForm" class="form">
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                id="brandName"
+                formControlName="brandName"
+                class="form-control"
+                placeholder="Model"
+              />
               <label for="brandName">Model</label>
-              <div class="form-group">
-                <input
-                  type="text"
-                  id="brandName"
-                  formControlName="brandName"
-                  class="form-control"
-                  placeholder="Model giriniz"
-                />
-              </div>
             </div>
           </form>
         </div>

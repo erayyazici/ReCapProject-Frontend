@@ -26,4 +26,5 @@ export class BrandSetComponent implements OnInit {
       setTimeout(function() { window.location=window.location;},500);
     })
   }
+
 }

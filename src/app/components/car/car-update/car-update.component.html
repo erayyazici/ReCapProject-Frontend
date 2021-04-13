@@ -1,132 +1,42 @@
-<div class="content mt-2">
-    <div class="col-md-12">
+<div class="content">
+  <div class="col-md-12">
       <div class="card">
-        <div class="card-header">Araç Düzenle</div>
-        <div class="card-body">
-          <form [formGroup]="carUpdateForm" class="form">
-            
-            <div class="form-floating mb-3">
-              <input
-                type="text"
-                id="carName"
-                formControlName="carName"
-                class="form-control"
-                placeholder="Araba Adı"
-                [ngClass]="{
-                  'is-invalid':
-                    carUpdateForm.get('carName').touched &&
-                    carUpdateForm.get('carName').invalid
-                }"
-              />
-              <label for="carName">Araba Adı</label>
-            </div>
-  
-            <div class="form-floating mb-3">
-              <select
-                class="form-select"
-                [ngClass]="{
-                  'is-invalid':
-                    carUpdateForm.get('brandId').touched &&
-                    carUpdateForm.get('brandId').invalid
-                }"
-                aria-label="Renk"
-                formControlName="brandId"
-              >
-                <option
-                  class="form-control"
-                  type="number"
-                  *ngFor="let brand of brands"
-                  [ngValue]="brand.brandId"
-                >
-                  {{ brand.brandName }}
-                </option>
-              </select>
-              <label for="brandId">Marka</label>
-            </div>
-  
-  
-            <div class="form-floating mb-3">
-              <select
-                class="form-select"
-                [ngClass]="{
-                  'is-invalid':
-                    carUpdateForm.get('colorId').touched &&
-                    carUpdateForm.get('colorId').invalid
-                }"
-                aria-label="Renk"
-                formControlName="colorId"
-              >
-                <option
-                  type="number"
-                  class="form-control"
-                  *ngFor="let color of colors"
-                  [ngValue]="color.colorId"
-                >
-                  {{ color.colorName }}
-                </option>
-              </select>
-              <label for="colorId">Renk</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input
-                type="number"
-                id="modelYear"
-                formControlName="modelYear"
-                class="form-control"
-                placeholder="Model Yılı"
-                [ngClass]="{
-                  'is-invalid':
-                    carUpdateForm.get('modelYear').touched &&
-                    carUpdateForm.get('modelYear').invalid
-                }"
-              />
-              <label for="modelYear">Model Yılı</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input
-                type="number"
-                id="dailyPrice"
-                formControlName="dailyPrice"
-                class="form-control"
-                placeholder="Günlük Fiyat"
-                [ngClass]="{
-                  'is-invalid':
-                    carUpdateForm.get('dailyPrice').touched &&
-                    carUpdateForm.get('dailyPrice').invalid
-                }"
-              />
-              <label for="dailyPrice"
-                >Günlük Fiyat
-                {{
-                  carUpdateForm.value.dailyPrice
-                    | currency: "TRY":"symbol-narrow":"1.2-2"
-                }}</label
-              >
-            </div>
-
-            <div class="form-floating mb-3">
-              <input
-                type="text"
-                id="description"
-                formControlName="description"
-                class="form-control"
-                placeholder="Aciklama"
-                [ngClass]="{
-                  'is-invalid':
-                    carUpdateForm.get('description').touched &&
-                    carUpdateForm.get('description').invalid
-                }"
-              />
-              <label for="description">Açıklama</label>
-            </div>
-
-          </form>
-        </div>
-        <div class="card-footer">
-          <button class="btn btn-fill btn-success" (click)="update()">Güncelle</button>
-        </div>
+          <div class="card-header"><h1 class="title"><b>Araba</b></h1></div>
+          <div class="card-body">
+              <form [formGroup]="carUpdateForm">
+                  <div class="form-group">
+                      <div class="mb-3">
+                          <label for="brandId"><b>Marka</b></label>
+                          <select type ="number" id="brandId" class="form-select" aria-label="Marka secimi" formControlName="brandId" [(ngModel)]="brandId" >
+                              <option value="" disabled selected>Seçiniz..</option>
+                              <option *ngFor="let brand of brands" [ngValue]="brand.brandId">{{brand.brandName}}</option>
+                            </select>
+                      </div>
+                      <div class="mb-3">
+                          <label for="colorId"><b>Renk</b></label>
+                          <select id="colorId" class="form-select" aria-label="Renk secimi" formControlName="colorId" [(ngModel)]="colorId" >
+                              <option value="" disabled selected>Seçiniz..</option>
+                              <option *ngFor="let color of colors" [ngValue]="color.colorId" >{{color.colorName}}</option>
+                            </select>
+                      </div>
+                      <div class="mb-3">
+                          <label for="modelYear"><b>Model Yılı</b></label>
+                          <input type="number" id="modelYear" formControlName="modelYear" class="form-control" [(ngModel)]="modelYear"/>
+                      </div>
+                      <div class="mb-3">
+                          <label for="dailyPrice"><b>Günlük Ücret</b></label>
+                          <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" [(ngModel)]="dailyPrice"/>
+                      </div>
+                      <div class="mb-3">
+                          <label for="description"><b>Açıklama</b></label>
+                          <input type="text" id="description" formControlName="description" class="form-control" [(ngModel)]="description"/>
+                      </div>
+                  </div>
+              </form>
+          </div>
+          <div class="card-footer">
+              <button class="btn btn-fill" style="background-color: #90c6eb;" (click)="update()"><b>Güncelle</b></button>
+          </div>
       </div>
-    </div>
   </div>
+</div>
