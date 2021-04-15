@@ -1,27 +1,18 @@
-# ReCapProject
+TR
+Araba Kiralama Projesi | Front-End
+Angular ve Bootstrap v5.0 Kullanılarak Hazırlanmıştır
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+İlgili Klasörler
+Component : HTML, Typescript ve CSS dosyalarını içerir. Typescript dosyaları genel olarak ilgili componentin servisini kullanılır.
+Services : API ile bağlantının sağlandığı kısımdır. Gerekli metotlar serviste yazıldıktan sonra Component tarafında kullanıma alınarak(Implementation) karmaşa önlenmiş olur.
+Models : API'dan gelen veriler Front-End'de bir interface içerisinde özellik olarak tutulur ve Component tarafında kullanıcıya gösterilir.
+Pipes : Eğer elimizde bir veri varsa ve bu veriyi farklı şekilde kullanmak istiyorsak pipe'lar kullanılabilir (Örneğin: Bir fiyat verisi varsa ve o fiyata KDV eklenecek ise pipe kullanılabilir.)
+ENG
+Rent A Car Project | Front-End
+Made using Angular and Bootstrap v5.0
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Related Folders
+Component : Includes HTML,Typesript and CSS files. The Typescript files generally use related component service.
+Services : It is the part the connection with the API is provided.Confusion is avoided by implementation service in Component after write the necessary method.
+Models : Data from the API is kept as a property from an interface on the Front-End and displayed to user in Component
+Pipes : If we have a data and we want using data differently can use the pipe.(For Example: If we have a price data and want add vat this price, we can use pipe)
