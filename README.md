@@ -5,7 +5,7 @@
 - [Component](https://github.com/cihateray/ReCapProject-Frontend/tree/master/src/app/components) : HTML, Typescript ve CSS dosyalarını içerir. Typescript dosyaları genel olarak ilgili componentin servisini kullanılır.
 - [Services](https://github.com/cihateray/ReCapProject-Frontend/tree/master/src/app/services) : API ile bağlantının sağlandığı kısımdır. Gerekli metotlar serviste yazıldıktan sonra  [Component](https://github.com/mfbilgin42/kamp-final-project-front-end/tree/main/src/app/component) tarafında kullanıma alınarak(Implementation) karmaşa önlenmiş olur.
 - [Models](https://github.com/cihateray/ReCapProject-Frontend/tree/master/src/app/models) : API'dan gelen veriler Front-End'de bir interface içerisinde özellik olarak tutulur ve [Component](https://github.com/mfbilgin42/kamp-final-project-front-end/tree/main/src/app/component) tarafında kullanıcıya gösterilir.
-- [Pipes] (https://github.com/cihateray/ReCapProject-Frontend/tree/master/src/app/pipes) : Eğer elimizde bir veri varsa ve bu veriyi farklı şekilde kullanmak istiyorsak pipe'lar kullanılabilir (Örneğin: Bir fiyat verisi varsa ve o fiyata KDV eklenecek ise pipe kullanılabilir.)
+- [Pipes](https://github.com/cihateray/ReCapProject-Frontend/tree/master/src/app/pipes) : Eğer elimizde bir veri varsa ve bu veriyi farklı şekilde kullanmak istiyorsak pipe'lar kullanılabilir (Örneğin: Bir fiyat verisi varsa ve o fiyata KDV eklenecek ise pipe kullanılabilir.)
 
 ###### ENG
 # Rent A Car Project | Front-End
